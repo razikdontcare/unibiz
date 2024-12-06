@@ -10,7 +10,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto gap-5">
           <div className="flex items-center justify-center">
             <Logo className="size-20" />
-            <span className="font-bold text-4xl text-primary">UniBiz</span>
+            <span className="font-bold text-4xl text-primary">UniBizz</span>
           </div>
           <div className="flex items-center justify-center w-full">
             <div className="flex items-center w-full border-2 border-black/40 rounded-lg gap-3 px-2 py-2">
