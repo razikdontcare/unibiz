@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Final Project Mata Kuliah Rekayasa Perangkat Lunak - Kelompok 3
 
-## Getting Started
+## Anggota Kelompok
+1. 2308561023 - Ni Kadek Rika Dwi Utami
+2. 2308561029 - Komang Krisna Jaya Nova Antara
+3. 2308561053 - Jonathan Federico Tantoro
+4. 2308561083 - Abdurrazik
 
-First, run the development server:
+## Deskripsi
+Unibiz adalah aplikasi inovatif yang dirancang untuk mendukung pengelolaan unit bisnis Universitas Udayana secara efisien dan transparan dalam transisi menuju PTN BH. Dengan fitur utama seperti pemantauan kinerja, pengelolaan keuangan, dan alur persetujuan digital, Unibiz memberikan kemudahan dalam mengoptimalkan unit bisnis yang sudah ada serta mendukung pengembangan bisnis baru. Melalui dashboard real-time, pengelola kampus dapat mengakses laporan keuangan, grafik pemasukan, dan indikator kinerja untuk memastikan pengelolaan bisnis berjalan sesuai regulasi dan mendukung kemandirian finansial universitas.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
