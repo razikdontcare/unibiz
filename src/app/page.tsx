@@ -1,14 +1,9 @@
-"use client";
-
-import Navbar from "@/components/navbar";
-import { UserContextProvider } from "@/utils/context";
+import Homepage from "@/components/Homepage";
 
 export default function Home() {
   return (
     <>
-      <UserContextProvider>
-        <Navbar />
-      </UserContextProvider>
+      <Homepage />
     </>
   );
 }
