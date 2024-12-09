@@ -41,10 +41,10 @@ export default function Navbar() {
                 onClick={() => setUser((prev) => !prev)}
                 className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
               >
-                Masuk
+                <span>Masuk</span>
               </button>
               <button className="flex items-center justify-center py-3 px-4 text-white bg-primary border-2 border-primary rounded-xl font-medium hover:bg-primary/80 hover:border-primary/80 transition-all duration-300">
-                Daftar
+                <span>Daftar</span>
               </button>
             </div>
           </>
