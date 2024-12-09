@@ -1,4 +1,4 @@
-import AlatTulisKampusIcon from "./AlatTulisKampusIcon";
+import AlatTulisKantorIcon from "./AlatTulisKantorIcon";
 import AplikasiDanSoftwareIcon from "./AplikasiDanSoftwareIcon";
 import CateringIcon from "./CateringIcon";
 import KursusDanPelatihanIcon from "./KursusDanPelatihanIcon";
@@ -15,8 +15,8 @@ import RobotikDanElektronikIcon from "./RobotikDanElektronikIcon";
 import SeniDanTariIcon from "./SeniDanTariIcon";
 import SewaFasilitasIcon from "./SewaFasilitasIcon";
 
-export {
-  AlatTulisKampusIcon,
+const icons = {
+  AlatTulisKantorIcon,
   AplikasiDanSoftwareIcon,
   CateringIcon,
   KursusDanPelatihanIcon,
@@ -33,3 +33,5 @@ export {
   SeniDanTariIcon,
   SewaFasilitasIcon,
 };
+
+export default icons;
