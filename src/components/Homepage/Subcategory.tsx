@@ -71,14 +71,20 @@ const subcategories: SubcategoryType[] = [
 export default function Subcategory() {
   return (
     <>
-      <div className="flex flex-wrap items-center w-full max-w-7xl mx-auto">
+      <div className="flex items-center max-w-7xl mx-auto mt-6">
+        <h2 className="font-bold uppercase text-xl">Subkategori</h2>
+      </div>
+      <div className="flex flex-wrap items-center max-w-7xl w-full mx-auto ">
         {subcategories.map((subcategory, index) => (
-          <div key={index} className="w-1/6 p-4">
-            <div className="flex flex-col items-center">
+          <button
+            key={index}
+            className="w-1/6 group transition-all duration-300 border h-36"
+          >
+            <div className="flex flex-col items-center group-hover:scale-90 transition-all duration-300">
               {subcategory.icon}
               <p className="text-center">{subcategory.name}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </>
