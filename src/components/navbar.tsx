@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import CartIcon from "./icons/cart";
 import Logo from "./icons/logo";
 import ProfileIcon from "./icons/profile";
@@ -37,15 +38,19 @@ export default function Navbar() {
         ) : (
           <>
             <div className={"flex items-center justify-center gap-4"}>
-              <button
+              <Link
+                href={"/login"}
                 onClick={() => setUser((prev) => !prev)}
                 className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
               >
                 <span>Masuk</span>
-              </button>
-              <button className="flex items-center justify-center py-3 px-4 text-white bg-primary border-2 border-primary rounded-xl font-medium hover:bg-primary/80 hover:border-primary/80 transition-all duration-300">
+              </Link>
+              <Link
+                href={"/register"}
+                className="flex items-center justify-center py-3 px-4 text-white bg-primary border-2 border-primary rounded-xl font-medium hover:bg-primary/80 hover:border-primary/80 transition-all duration-300"
+              >
                 <span>Daftar</span>
-              </button>
+              </Link>
             </div>
           </>
         )}
