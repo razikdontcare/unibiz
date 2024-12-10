@@ -6,7 +6,7 @@ const items = Array.from({ length: 10 });
 export default function Category() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center container mx-auto max-w-7xl mt-10 gap-8">
+      <div className="flex flex-col items-center justify-center container mx-auto max-w-7xl mt-10 gap-8 pb-20">
         <div className="flex flex-col items-center justify-center w-full mx-auto">
           <div className="flex items-center justify-between w-full">
             <h2 className="font-bold text-4xl">Jasa</h2>
