@@ -18,7 +18,7 @@ export default function Category() {
             </Link>
           </div>
           <div className="flex items-center w-full py-5 flex-nowrap overflow-hidden">
-            <div className="flex items-center w-full gap-5 overflow-auto hide-scrollbar">
+            <div className="flex items-center w-full gap-3 overflow-auto hide-scrollbar">
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
@@ -42,7 +42,7 @@ export default function Category() {
             </Link>
           </div>
           <div className="flex items-center w-full py-5 flex-nowrap overflow-hidden">
-            <div className="flex items-center w-full gap-5 overflow-auto hide-scrollbar">
+            <div className="flex items-center w-full gap-3 overflow-auto hide-scrollbar">
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
@@ -66,7 +66,7 @@ export default function Category() {
             </Link>
           </div>
           <div className="flex items-center w-full py-5 flex-nowrap overflow-hidden">
-            <div className="flex items-center w-full gap-5 overflow-auto hide-scrollbar">
+            <div className="flex items-center w-full gap-3 overflow-auto hide-scrollbar">
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
@@ -90,7 +90,7 @@ export default function Category() {
             </Link>
           </div>
           <div className="flex items-center w-full py-5 flex-nowrap overflow-hidden">
-            <div className="flex items-center w-full gap-5 overflow-auto hide-scrollbar">
+            <div className="flex items-center w-full gap-3 overflow-auto hide-scrollbar">
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
