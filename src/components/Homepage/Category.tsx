@@ -22,7 +22,9 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  src={`https://picsum.photos/seed/${i}/512/512`}
+                  src={`https://picsum.photos/seed/${
+                    Math.PI * i + 0.5
+                  }/512/512`}
                   alt={i.toString()}
                 />
               ))}
@@ -44,7 +46,9 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  src={`https://picsum.photos/seed/${i}/512/512`}
+                  src={`https://picsum.photos/seed/${
+                    Math.PI * i + 0.4
+                  }/512/512`}
                   alt={i.toString()}
                 />
               ))}
@@ -66,7 +70,9 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  src={`https://picsum.photos/seed/${i}/512/512`}
+                  src={`https://picsum.photos/seed/${
+                    Math.PI * i + 0.3
+                  }/512/512`}
                   alt={i.toString()}
                 />
               ))}
@@ -88,7 +94,9 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  src={`https://picsum.photos/seed/${i}/512/512`}
+                  src={`https://picsum.photos/seed/${
+                    Math.PI * i + 0.2
+                  }/512/512`}
                   alt={i.toString()}
                 />
               ))}
