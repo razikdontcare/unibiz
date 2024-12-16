@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { UserContextProvider } from "@/utils/context";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -10,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Unibiz",
+  title: "UniBiz",
   description: "",
 };
 
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${poppins.className} antialiased`}>
-        {children}
+        <UserContextProvider>{children}</UserContextProvider>
       </body>
     </html>
   );
