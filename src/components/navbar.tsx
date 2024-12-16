@@ -11,7 +11,7 @@ export default function Navbar() {
   const { user, setUser } = useUserContext();
 
   return (
-    <div className="fixed z-10 bg-white flex items-center justify-center p-5 w-full shadow-xl">
+    <div className="fixed z-10 bg-white flex items-center justify-center p-5 w-full mx-auto shadow-xl">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto gap-5">
         <div className="flex items-center justify-center">
           <Logo className="size-20" />
