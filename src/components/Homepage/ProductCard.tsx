@@ -11,7 +11,7 @@ export default function ProductCard({
   return (
     <>
       <div className="border-2 border-black p-5 rounded-xl flex flex-col justify-center gap-2">
-        <div className="relative p-2 border-2 rounded-lg border-black/50 aspect-square overflow-hidden size-40">
+        <div className="relative p-2 border-2 rounded-lg border-black/50 aspect-square overflow-hidden size-[9.9rem]">
           <Image src={src} alt={alt} fill className="object-contain" />
         </div>
         <div className="flex flex-col justify-center">
