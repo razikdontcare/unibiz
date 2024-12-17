@@ -26,7 +26,7 @@ export default function RegisterEmailPasswordPage({
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full  max-w-xl">
+      <div className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full max-w-xl">
         <div className="flex items-center justify-start w-full gap-5 pb-10">
           <button onClick={() => setPage(0)}>
             <ArrowLeftIcon />
