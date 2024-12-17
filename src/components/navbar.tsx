@@ -1,15 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import CartIcon from "./icons/cart";
+// import CartIcon from "./icons/cart";
 import Logo from "./icons/logo";
-import ProfileIcon from "./icons/profile";
+// import ProfileIcon from "./icons/profile";
 import SearchIcon from "./icons/search";
-import { useUserContext } from "@/utils/context";
+// import { useUserContext } from "@/utils/context";
 
 export default function Navbar() {
-  const { user, setUser } = useUserContext();
-
   return (
     <div className="fixed z-10 bg-white flex items-center justify-center p-5 w-full mx-auto shadow-xl">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto gap-5">
@@ -26,7 +24,22 @@ export default function Navbar() {
             />
           </div>
         </div>
-        {user ? (
+        <div className={"flex items-center justify-center gap-4"}>
+          <Link
+            href={"/login"}
+            // onClick={() => setUser((prev) => !prev)}
+            className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
+          >
+            <span>Masuk</span>
+          </Link>
+          <Link
+            href={"/register"}
+            className="flex items-center justify-center py-3 px-4 text-white bg-primary border-2 border-primary rounded-xl font-medium hover:bg-primary/80 hover:border-primary/80 transition-all duration-300"
+          >
+            <span>Daftar</span>
+          </Link>
+        </div>
+        {/* {user ? (
           <div className={"flex items-center justify-center gap-10"}>
             <button>
               <CartIcon className="size-8" />
@@ -40,7 +53,7 @@ export default function Navbar() {
             <div className={"flex items-center justify-center gap-4"}>
               <Link
                 href={"/login"}
-                onClick={() => setUser((prev) => !prev)}
+                // onClick={() => setUser((prev) => !prev)}
                 className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
               >
                 <span>Masuk</span>
@@ -53,7 +66,7 @@ export default function Navbar() {
               </Link>
             </div>
           </>
-        )}
+        )} */}
       </div>
     </div>
   );
