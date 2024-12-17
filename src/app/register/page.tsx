@@ -9,8 +9,8 @@ export default function RegisterPage() {
       <RegisterEmailContextProvider>
         <div className="flex flex-col items-center justify-start h-screen overflow-hidden py-10 gap-10 w-full mx-auto">
           <Link href="/" className="flex items-center justify-center">
-            <Logo className="size-36" />
-            <span className="font-bold text-6xl text-primary">UniBiz</span>
+            <Logo className="size-20" />
+            <span className="font-bold text-4xl text-primary">UniBiz</span>
           </Link>
           <div className="flex items-center justify-center w-full h-full">
             <Register />
