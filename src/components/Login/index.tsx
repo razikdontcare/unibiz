@@ -19,7 +19,7 @@ export default function Login() {
             <Logo className="size-20" />
             <span className="font-bold text-4xl text-primary">UniBiz</span>
           </Link>
-          <div className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full h-full max-w-xl">
+          <div className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full max-w-xl">
             <div className="flex items-center justify-between w-full pb-14">
               <h1 className="font-bold text-2xl">Masuk ke UniBiz</h1>
               <Link href="/register" className="text-primary text-2xl">
