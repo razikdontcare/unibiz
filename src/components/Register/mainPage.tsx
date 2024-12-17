@@ -13,7 +13,7 @@ export default function RegisterMainPage({
     <>
       <div className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full max-w-xl">
         <div className="flex items-center justify-center w-full">
-          <h1 className="font-bold text-4xl">Daftar Sekarang</h1>
+          <h1 className="font-bold text-2xl">Daftar Sekarang</h1>
         </div>
         <div className="flex items-center justify-center py-10 gap-3">
           <span>Sudah punya akun UniBiz?</span>

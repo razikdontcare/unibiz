@@ -21,8 +21,8 @@ export default function Login() {
           </Link>
           <div className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full max-w-xl">
             <div className="flex items-center justify-between w-full pb-14">
-              <h1 className="font-bold text-2xl">Masuk ke UniBiz</h1>
-              <Link href="/register" className="text-primary text-2xl">
+              <h1 className="font-bold text-xl">Masuk ke UniBiz</h1>
+              <Link href="/register" className="text-primary text-xl">
                 Daftar
               </Link>
             </div>
@@ -48,10 +48,7 @@ export default function Login() {
               </div>
             </div>
             <div className="flex items-center justify-end w-full">
-              <Link
-                href="#"
-                className="font-bold text-primary text-xl pt-10 pb-5"
-              >
+              <Link href="#" className="font-bold text-primary pt-10 pb-5">
                 Butuh Bantuan?
               </Link>
             </div>
