@@ -1,16 +1,33 @@
 "use client";
 import Link from "next/link";
 import Logo from "../icons/logo";
-import { useState, MouseEventHandler } from "react";
+import { useState, MouseEventHandler, useEffect } from "react";
+import { refreshCreds } from "@/app/actions";
+import { auth } from "@/db/firebase";
+import { sendEmailVerification } from "firebase/auth";
 
-export default function Verification() {
+export default function Verification({ email }: { email: string }) {
   const [timer, setTimer] = useState<number>(59);
   const [isResend, setIsResend] = useState<boolean>(false);
 
-  const handleResend: MouseEventHandler<HTMLButtonElement> = (e) => {
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      await refreshCreds();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleResend: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     setIsResend(true);
     let time = timer;
+    const user = auth.currentUser;
+    if (user) {
+      await sendEmailVerification(user);
+    } else {
+      alert("Gagal mengirim email");
+    }
     const interval = setInterval(() => {
       time = time - 1;
       setTimer(time);
@@ -32,7 +49,7 @@ export default function Verification() {
         <h1 className="capitalize font-bold text-4xl pt-10">Cek E-Mail Kamu</h1>
         <p className="text-center">
           Kamu hampir selesai! Kami baru saja mengirimkan email verifikasi ke{" "}
-          <span className="font-bold">name@example.com</span>
+          <span className="font-bold">{email}</span>
         </p>
         <p className="text-center">
           Segera cek inbox/spam email dan klik tombol {'"Verifikasi Sekarang"'}{" "}
@@ -49,6 +66,7 @@ export default function Verification() {
           <button
             onClick={handleResend}
             className="capitalize bg-primary text-white px-5 py-2 rounded-xl hover:bg-primary/80 transition-colors duration-300"
+            disabled={isResend}
           >
             Kirim ulang email
           </button>
