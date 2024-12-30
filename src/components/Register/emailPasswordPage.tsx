@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "@/db/firebase";
+import { FirebaseError } from "firebase/app";
 
 export default function RegisterEmailPasswordPage({
   setPage,
@@ -23,6 +24,7 @@ export default function RegisterEmailPasswordPage({
   const [isFocusNama, setIsFocusNama] = useState<boolean>(false);
   const [isFocusPassword, setIsFocusPassword] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -35,8 +37,24 @@ export default function RegisterEmailPasswordPage({
   const onFocusPassword = () => setIsFocusPassword(true);
   const onBlurPassword = () => setIsFocusPassword(false);
 
+  const errorMessages = (error: string | undefined) => {
+    switch (error) {
+      case "auth/email-already-in-use":
+        return (
+          <span className="text-red-400">
+            Akun dengan email tersebut sudah ada.
+          </span>
+        );
+      case "auth/weak-password":
+        return <span className="text-red-400">Password terlalu lemah.</span>;
+      default:
+        return <span className="text-red-400">Terjadi kesalahan.</span>;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       if (isEmail(email)) {
@@ -49,11 +67,13 @@ export default function RegisterEmailPasswordPage({
         await updateProfile(user.user, {
           displayName: nama,
         });
+        setLoading(false);
         router.push("/login");
       }
     } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
+      setLoading(false);
+      if (error instanceof FirebaseError) {
+        setError(error.code);
       }
     }
   };
@@ -74,7 +94,9 @@ export default function RegisterEmailPasswordPage({
                 id="email"
                 name="email"
                 type="text"
-                className="w-full border-2 rounded-lg border-border py-3 px-5 focus:ring-0 focus:outline-none"
+                className={`w-full border-2 rounded-lg ${
+                  isEmail(email) ? "border-border" : "border-red-400"
+                } py-3 px-5 focus:ring-0 focus:outline-none transition-all duration-300`}
                 placeholder={isFocusEmail ? "name@example.com" : ""}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -83,9 +105,11 @@ export default function RegisterEmailPasswordPage({
               />
               <label
                 htmlFor="email"
-                className={`absolute bg-white text-black/40 ${
+                className={`absolute bg-white  ${
                   isFocusEmail || email !== "" ? "-top-3 scale-95" : "top-1/4"
-                } left-3 px-3 pointer-events-none transition-all duration-300`}
+                } left-3 px-3 pointer-events-none ${
+                  isEmail(email) ? "text-black/40" : "text-red-400"
+                } transition-all duration-300`}
               >
                 Email
               </label>
@@ -138,16 +162,22 @@ export default function RegisterEmailPasswordPage({
           </div>
           {error !== "" && (
             <div className="flex items-center justify-center p-3 w-full">
-              <span className="text-red-400">{error}</span>
+              {errorMessages(error)}
             </div>
           )}
           <div className="flex items-center w-full py-5">
             <button
               className="w-full border-2 rounded-lg font-bold border-btn disabled:border-border py-3 px-5 disabled:text-disable-secondary disabled:bg-disable-primary bg-btn text-white hover:bg-btn/90 transition-colors duration-300"
-              disabled={email === "" || nama === "" || password === ""}
+              disabled={
+                email === "" ||
+                nama === "" ||
+                password === "" ||
+                loading ||
+                !isEmail(email)
+              }
               type="submit"
             >
-              Daftar
+              {loading ? "Loading..." : "Daftar"}
             </button>
           </div>
         </form>

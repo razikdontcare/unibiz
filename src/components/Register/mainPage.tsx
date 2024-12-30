@@ -20,7 +20,7 @@ export default function RegisterMainPage({
   const errorMessages = (error: string | undefined) => {
     switch (error) {
       case "invalid-email":
-        return <span className="text-red-400">Email atau password salah.</span>;
+        return <span className="text-red-400">Pastikan Email Anda Benar.</span>;
       default:
         return <span className="text-red-400">Terjadi kesalahan.</span>;
     }

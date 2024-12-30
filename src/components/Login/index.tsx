@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState } from "react";
 import QRCodeIcon from "../icons/qrcode";
 import GoogleIcon from "../icons/google";
-import { useFormStatus } from "react-dom";
 import isEmail from "@/utils/isEmail";
 import { auth } from "@/db/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -23,7 +22,7 @@ export default function Login({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { pending } = useFormStatus();
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -51,6 +50,7 @@ export default function Login({
           <form
             onSubmit={async (e) => {
               e.preventDefault();
+              setLoading(true);
               try {
                 if (isEmail(email)) {
                   const credential = await signInWithEmailAndPassword(
@@ -68,8 +68,10 @@ export default function Login({
                   });
 
                   router.push(searchParams.callbackUrl || "/");
+                  setLoading(false);
                 }
               } catch (error) {
+                setLoading(false);
                 if (error instanceof FirebaseError) {
                   router.push(
                     `/login?error=${error.code}&callbackUrl=${
@@ -137,10 +139,10 @@ export default function Login({
               <button
                 type="submit"
                 className="w-full border-2 rounded-lg font-bold border-btn disabled:border-border py-3 px-5 disabled:text-disable-secondary disabled:bg-disable-primary bg-btn text-white hover:bg-btn/90 transition-colors duration-300"
-                disabled={email === "" || password === "" || pending}
-                aria-disabled={pending}
+                disabled={email === "" || password === "" || loading}
+                aria-disabled={loading}
               >
-                {pending ? "Loading..." : "Selanjutnya"}
+                {loading ? "Loading..." : "Selanjutnya"}
               </button>
             </div>
             <div className="flex items-center justify-center w-full gap-1">
