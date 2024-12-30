@@ -1,6 +1,5 @@
 import Link from "next/link";
 import ProductCard from "./ProductCard";
-
 const items = Array.from({ length: 10 });
 
 export default function Category() {
@@ -22,6 +21,7 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
+                  product={["jasa", i.toString()]}
                   src={`https://picsum.photos/seed/${
                     Math.PI * i + 0.5
                   }/512/512`}
@@ -46,6 +46,7 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
+                  product={["produk", i.toString()]}
                   src={`https://picsum.photos/seed/${
                     Math.PI * i + 0.4
                   }/512/512`}
@@ -70,6 +71,7 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
+                  product={["sewa-gedung", i.toString()]}
                   src={`https://picsum.photos/seed/${
                     Math.PI * i + 0.3
                   }/512/512`}
@@ -94,6 +96,7 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
+                  product={["sewa-lahan", i.toString()]}
                   src={`https://picsum.photos/seed/${
                     Math.PI * i + 0.2
                   }/512/512`}

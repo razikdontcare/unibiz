@@ -3,7 +3,12 @@ import Register from "@/components/Register";
 import { RegisterEmailContextProvider } from "@/utils/context";
 import Link from "next/link";
 
-export default function RegisterPage() {
+export default async function RegisterPage(props: {
+  searchParams: Promise<{
+    callbackUrl: string | undefined;
+    error: string | undefined;
+  }>;
+}) {
   return (
     <>
       <RegisterEmailContextProvider>
@@ -13,7 +18,7 @@ export default function RegisterPage() {
             <span className="font-bold text-4xl text-primary">UniBiz</span>
           </Link>
           <div className="flex items-center justify-center w-full h-full">
-            <Register />
+            <Register searchParams={await props.searchParams} />
           </div>
         </div>
       </RegisterEmailContextProvider>

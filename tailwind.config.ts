@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        btn: "#2A9F7F",
         primary: "#1486C3",
         secondary: "#2A9F7F",
         border: "#AFAFAF",
