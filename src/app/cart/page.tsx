@@ -6,34 +6,30 @@ import { getTokens } from "next-firebase-auth-edge";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Items } from "@/components/Cart/parent";
-
-const farmasiItems: Items[] = [
-  {
-    name: "Salep luka herbal",
-    price: 15000,
-    alt: "Salep luka herbal",
-    src: "https://picsum.photos/seed/salep-luka-herbal/512/512",
-  },
-];
-
-const unudItems: Items[] = [
-  {
-    name: "Penyewaan Gedung Widya Sabha",
-    price: 20000,
-    alt: "Penyewaan Gedung Widya Sabha",
-    src: "https://picsum.photos/seed/penyewaan-gedung-widya-sabha/512/512",
-  },
-];
+import { Items } from "@/types";
 
 const items = [
   {
     title: "Farmasi",
-    items: farmasiItems,
+    items: [
+      {
+        name: "Salep luka herbal",
+        price: 15000,
+        alt: "Salep luka herbal",
+        src: "https://picsum.photos/seed/salep-luka-herbal/512/512",
+      },
+    ] as Items[],
   },
   {
     title: "Universitas Udayana",
-    items: unudItems,
+    items: [
+      {
+        name: "Penyewaan Gedung Widya Sabha",
+        price: 20000,
+        alt: "Penyewaan Gedung Widya Sabha",
+        src: "https://picsum.photos/seed/penyewaan-gedung-widya-sabha/512/512",
+      },
+    ] as Items[],
   },
 ];
 
