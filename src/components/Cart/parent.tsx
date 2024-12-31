@@ -1,11 +1,5 @@
 import CartItem from "./Items";
-
-export interface Items {
-  src: string;
-  alt: string;
-  price: number;
-  name: string;
-}
+import { Items } from "@/types";
 
 export default function CartParent({
   children,

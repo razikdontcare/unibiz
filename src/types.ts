@@ -1,13 +1,37 @@
 import React from "react";
-
-export interface User {
-  name?: string;
-  email?: string;
-  password?: string;
-  role?: "admin" | "customer" | "seller";
+/**
+ * Represents a subcategory with its details.
+ */
+export interface SubcategoryType {
+  /**
+   * The name of the subcategory.
+   */
+  name: string;
+  /**
+   * The icon of the subcategory.
+   */
+  icon: React.JSX.Element;
 }
 
-export interface SubcategoryType {
+/**
+ * Represents an item with its details.
+ */
+export interface Items {
+  /**
+   * the source of the image.
+   * @example "https://picsum.photos/seed/salep-luka-herbal/512/512"
+   */
+  src: string;
+  /**
+   * the alt text of the image.
+   */
+  alt: string;
+  /**
+   * the price of the item.
+   */
+  price: number;
+  /**
+   * the name of the item.
+   */
   name: string;
-  icon: React.JSX.Element;
 }

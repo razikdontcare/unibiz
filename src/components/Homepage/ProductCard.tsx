@@ -9,13 +9,13 @@ export default function ProductCard({
 }: {
   src: string | StaticImport;
   alt: string;
-  product: [string, string];
+  product: [string, string, string];
 }) {
   return (
     <>
       <div>
         <Link
-          href={`/${product[0]}/${product[1]}`}
+          href={`/${product[0]}/${product[1]}/${product[2]}`}
           className="border-2 border-black p-5 rounded-xl flex flex-col justify-center gap-2"
         >
           <div className="relative p-2 border-2 rounded-lg border-black/50 aspect-square overflow-hidden size-[9.9rem]">

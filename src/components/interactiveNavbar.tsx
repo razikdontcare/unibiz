@@ -25,8 +25,8 @@ export function ProfileButton({
   return (
     <>
       <div className={"flex items-center justify-center gap-10"}>
-        <div className="relative">
-          <Link href="/chats">
+        <Link href="/chats">
+          <div className="relative">
             <ChatIcon className="size-8" />
             <div className="bg-primary absolute p-2 rounded-full -top-2 -right-2">
               <div className="relative">
@@ -35,15 +35,21 @@ export function ProfileButton({
                 </span>
               </div>
             </div>
-          </Link>
-        </div>
-        <div>
-          <Link href="/cart">
+          </div>
+        </Link>
+        <Link href="/cart">
+          <div className="relative">
             <CartIcon className="size-8" />
-          </Link>
-        </div>
+          </div>
+        </Link>
         <div className="relative">
-          <button onClick={() => setOpen((prev) => !prev)}>
+          <ProfileOverlay
+            email={email!}
+            displayName={name!}
+            image={picture!}
+            open={[isOpen, setOpen]}
+          />
+          <button onClick={() => setOpen((prev) => !prev)} className="">
             {picture ? (
               <>
                 <div className="relative size-10 rounded-full overflow-hidden">
@@ -59,12 +65,6 @@ export function ProfileButton({
               <ProfileIcon className="size-8" />
             )}
           </button>
-          <ProfileOverlay
-            email={email!}
-            displayName={name!}
-            image={picture!}
-            open={[isOpen, setOpen]}
-          />
         </div>
       </div>
     </>

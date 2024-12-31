@@ -21,10 +21,8 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  product={["jasa", i.toString()]}
-                  src={`https://picsum.photos/seed/${
-                    Math.PI * i + 0.5
-                  }/512/512`}
+                  product={["jasa", "pengolahan-data", i.toString()]}
+                  src={`https://picsum.photos/seed/${"jasa-" + i}/512/512`}
                   alt={i.toString()}
                 />
               ))}
@@ -46,10 +44,8 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  product={["produk", i.toString()]}
-                  src={`https://picsum.photos/seed/${
-                    Math.PI * i + 0.4
-                  }/512/512`}
+                  product={["produk", "obat-dan-farmasi", i.toString()]}
+                  src={`https://picsum.photos/seed/${"produk-" + i}/512/512`}
                   alt={i.toString()}
                 />
               ))}
@@ -71,9 +67,9 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  product={["sewa-gedung", i.toString()]}
+                  product={["sewa-gedung", "sewa-fasilitas", i.toString()]}
                   src={`https://picsum.photos/seed/${
-                    Math.PI * i + 0.3
+                    "sewa-gedung-" + i
                   }/512/512`}
                   alt={i.toString()}
                 />
@@ -96,9 +92,9 @@ export default function Category() {
               {items.map((_, i) => (
                 <ProductCard
                   key={i}
-                  product={["sewa-lahan", i.toString()]}
+                  product={["sewa-lahan", "penyewaan-lahan", i.toString()]}
                   src={`https://picsum.photos/seed/${
-                    Math.PI * i + 0.2
+                    "sewa-lahan-" + i
                   }/512/512`}
                   alt={i.toString()}
                 />
