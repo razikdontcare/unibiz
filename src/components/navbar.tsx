@@ -21,10 +21,12 @@ export default async function Navbar() {
   return (
     <div className="fixed z-10 bg-white flex items-center justify-center p-5 w-full mx-auto shadow-xl">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto gap-5">
-        <div className="flex items-center justify-center">
-          <Logo className="size-20" />
-          <span className="font-bold text-4xl text-primary">UniBiz</span>
-        </div>
+        <Link href="/">
+          <div className="flex items-center justify-center">
+            <Logo className="size-20" />
+            <span className="font-bold text-4xl text-primary">UniBiz</span>
+          </div>
+        </Link>
         <div className="flex items-center justify-center w-full">
           <div className="flex items-center w-full border-2 border-black/40 rounded-lg gap-3 p-2">
             <SearchIcon className="size-8" />
@@ -35,11 +37,13 @@ export default async function Navbar() {
           </div>
         </div>
         {token ? (
-          <ProfileButton
-            email={token.decodedToken.email}
-            name={token.decodedToken.name}
-            picture={token.decodedToken.picture}
-          />
+          <div>
+            <ProfileButton
+              email={token.decodedToken.email}
+              name={token.decodedToken.name}
+              picture={token.decodedToken.picture}
+            />
+          </div>
         ) : (
           <div className={"flex items-center justify-center gap-4"}>
             <Link
