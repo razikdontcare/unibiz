@@ -1,11 +1,41 @@
+import CartParent from "@/components/Cart/parent";
 import ArrowLeftIcon from "@/components/icons/arrowLeft";
-import ChatIcon from "@/components/icons/chat";
 import Navbar from "@/components/navbar";
 import { clientConfig, serverConfig } from "@/config";
 import { getTokens } from "next-firebase-auth-edge";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Items } from "@/components/Cart/parent";
+
+const farmasiItems: Items[] = [
+  {
+    name: "Salep luka herbal",
+    price: 15000,
+    alt: "Salep luka herbal",
+    src: "https://picsum.photos/seed/salep-luka-herbal/512/512",
+  },
+];
+
+const unudItems: Items[] = [
+  {
+    name: "Penyewaan Gedung Widya Sabha",
+    price: 20000,
+    alt: "Penyewaan Gedung Widya Sabha",
+    src: "https://picsum.photos/seed/penyewaan-gedung-widya-sabha/512/512",
+  },
+];
+
+const items = [
+  {
+    title: "Farmasi",
+    items: farmasiItems,
+  },
+  {
+    title: "Universitas Udayana",
+    items: unudItems,
+  },
+];
 
 export default async function Cart() {
   const token = await getTokens(await cookies(), {
@@ -30,21 +60,28 @@ export default async function Cart() {
           <div>
             <h1 className="text-2xl font-bold">Keranjang Saya</h1>
           </div>
-          <div className="relative">
-            <Link href="/chats">
-              <ChatIcon className="size-8" />
-              <div className="bg-primary absolute p-2 rounded-full -top-2 -right-2">
-                <div className="relative">
-                  <span className="absolute text-xs font-bold -top-2 -left-1">
-                    2
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </div>
+          <div className="relative"></div>
         </div>
-        <div className="flex items-center justify-between w-full p-5">
-          <span>abc</span>
+        {items.map((item, index) => (
+          <CartParent key={index} items={item.items}>
+            {item.title}
+          </CartParent>
+        ))}
+
+        <div className="flex items-center justify-center w-full p-5 fixed bottom-0">
+          <div className="flex items-center justify-between container max-w-7xl">
+            <label className="flex items-center gap-3">
+              <input type="checkbox" className="accent-primary" />
+              <span className="text-xl font-bold">Semua</span>
+            </label>
+            <div className="flex items-center gap-3">
+              <span>Total</span>
+              <span className="font-bold text-primary">Rp 255.000,00</span>
+              <Link href="checkout" className="px-5 py-4 bg-primary text-white">
+                <span>{"Check Out (2)"}</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

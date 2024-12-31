@@ -7,6 +7,7 @@ import ProfileIcon from "./icons/profile";
 import LogoutBtn from "./logoutBtn";
 import Image from "next/image";
 import Link from "next/link";
+import ChatIcon from "./icons/chat";
 
 export function ProfileButton({
   email,
@@ -24,6 +25,18 @@ export function ProfileButton({
   return (
     <>
       <div className={"flex items-center justify-center gap-10"}>
+        <div className="relative">
+          <Link href="/chats">
+            <ChatIcon className="size-8" />
+            <div className="bg-primary absolute p-2 rounded-full -top-2 -right-2">
+              <div className="relative">
+                <span className="absolute text-xs font-bold -top-2 -left-1">
+                  2
+                </span>
+              </div>
+            </div>
+          </Link>
+        </div>
         <div>
           <Link href="/cart">
             <CartIcon className="size-8" />
