@@ -20,8 +20,6 @@ export function ProfileButton({
 }) {
   const [isOpen, setOpen] = useState<boolean>(false);
 
-  console.log(email, name, picture);
-
   return (
     <>
       <div className={"flex items-center justify-center gap-10"}>
