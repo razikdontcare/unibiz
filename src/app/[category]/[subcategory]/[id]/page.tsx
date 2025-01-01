@@ -5,6 +5,10 @@ import Image from "next/image";
 import StarIcon from "@/components/icons/star";
 import formatPrice from "@/utils/formatPrice";
 import CalendarIcon from "@/components/icons/calendar";
+import BubbleChatIcon from "@/components/icons/bubble";
+import { clientConfig, serverConfig } from "@/config";
+import { getTokens } from "next-firebase-auth-edge";
+import { cookies } from "next/headers";
 
 interface RegularProduct {
   title: string;
@@ -126,6 +130,14 @@ export default async function ProductPage({
 }) {
   const { id, category } = await params;
   const item = items[category];
+
+  const token = await getTokens(await cookies(), {
+    apiKey: clientConfig.apiKey,
+    cookieName: serverConfig.cookieName,
+    cookieSignatureKeys: serverConfig.cookieSignatureKeys,
+    serviceAccount: serverConfig.serviceAccount,
+  });
+
   return (
     <>
       <Navbar />
@@ -340,9 +352,15 @@ export default async function ProductPage({
           <button className="text-white font-bold bg-primary border border-primary rounded-xl p-2">
             <span>+ Keranjang</span>
           </button>
-          <button className="text-primary font-bold bg-white border border-primary rounded-xl p-2">
+          <button className="text-primary bg-white border border-primary rounded-xl p-2">
             <span>Pesan Langsung</span>
           </button>
+          {token && (
+            <button className="text-primary bg-white border border-primary rounded-xl p-2 flex items-center justify-center gap-2">
+              <span>Hubungi Penjual</span>
+              <BubbleChatIcon className="size-6" />
+            </button>
+          )}
         </div>
       </div>
     </>
