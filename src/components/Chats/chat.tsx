@@ -1,6 +1,4 @@
 "use client";
-import ArrowLeftIcon from "@/components/icons/arrowLeft";
-import Link from "next/link";
 import LaptopIcon from "@/components/icons/chats/laptop";
 import SearchIcon from "@/components/icons/search";
 import Image from "next/image";
@@ -8,6 +6,7 @@ import { useState } from "react";
 import EmojiIcon from "../icons/chats/emoji";
 import AttachmentIcon from "../icons/chats/attachment";
 import SendIcon from "../icons/chats/send";
+import BackBtn from "../back";
 
 interface Chat {
   src: string;
@@ -47,11 +46,7 @@ export default function Chats() {
       <div className="flex flex-col justify-center items-center container max-w-7xl mx-auto pt-32 h-screen">
         {selected === 0 && (
           <div className="flex items-center justify-between w-full py-5">
-            <div>
-              <Link href="/">
-                <ArrowLeftIcon />
-              </Link>
-            </div>
+            <BackBtn />
             <div>
               <h1 className={`text-2xl font-bold`}>{"Chat (99+)"}</h1>
             </div>
@@ -62,11 +57,7 @@ export default function Chats() {
           <div className="w-[30rem] flex items-center flex-col gap-3 ">
             {selected !== 0 && (
               <div className="flex items-center justify-between w-full py-5">
-                <div>
-                  <Link href="/">
-                    <ArrowLeftIcon />
-                  </Link>
-                </div>
+                <BackBtn />
                 <div>
                   <h1 className={`text-2xl font-bold`}>{"Chat (99+)"}</h1>
                 </div>

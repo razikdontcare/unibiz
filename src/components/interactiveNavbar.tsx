@@ -138,7 +138,7 @@ export function LoginBtn() {
   return (
     <>
       <Link
-        href={"/login?callbackUrl=" + pathname}
+        href={"/login?callbackUrl=" + encodeURIComponent(pathname)}
         className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
       >
         <span>Masuk</span>

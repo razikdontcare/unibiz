@@ -1,21 +1,16 @@
 import Navbar from "@/components/navbar";
-import Link from "next/link";
-import ArrowLeftIcon from "@/components/icons/arrowLeft";
 import Image from "next/image";
 import formatPrice from "@/utils/formatPrice";
 import ShieldIcon from "@/components/icons/shield";
 import CreditCardIcon from "@/components/icons/creditcard";
+import BackBtn from "@/components/back";
 
 export default function CheckoutPage() {
   return (
     <>
       <Navbar />
       <div className="flex items-start container mx-auto max-w-7xl gap-5 pt-36 min-h-screen">
-        <Link href="/">
-          <div className="flex items-center">
-            <ArrowLeftIcon />
-          </div>
-        </Link>
+        <BackBtn />
         <div className="flex-1 flex flex-col pt-10 gap-10">
           <div className="flex flex-col w-full gap-3">
             <span className="font-bold uppercase text-4xl">

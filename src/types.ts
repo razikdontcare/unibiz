@@ -8,6 +8,10 @@ export interface SubcategoryType {
    */
   name: string;
   /**
+   * The category of the subcategory.
+   */
+  category: "jasa" | "produk" | "sewa-gedung" | "sewa-lahan";
+  /**
    * The icon of the subcategory.
    */
   icon: React.JSX.Element;

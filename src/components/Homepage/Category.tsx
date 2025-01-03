@@ -10,7 +10,7 @@ export default function Category() {
           <div className="flex items-center justify-between w-full">
             <h2 className="font-bold text-4xl">Jasa</h2>
             <Link
-              href="#"
+              href="/jasa"
               className="text-xl hover:text-primary/80 transition-all duration-300"
             >
               Lihat Selengkapnya
@@ -33,7 +33,7 @@ export default function Category() {
           <div className="flex items-center justify-between w-full">
             <h2 className="font-bold text-4xl">Produk</h2>
             <Link
-              href="#"
+              href="/produk"
               className="text-xl hover:text-primary/80 transition-all duration-300"
             >
               Lihat Selengkapnya
@@ -56,7 +56,7 @@ export default function Category() {
           <div className="flex items-center justify-between w-full">
             <h2 className="font-bold text-4xl">Sewa Gedung</h2>
             <Link
-              href="#"
+              href="/sewa-gedung"
               className="text-xl hover:text-primary/80 transition-all duration-300"
             >
               Lihat Selengkapnya
@@ -81,7 +81,7 @@ export default function Category() {
           <div className="flex items-center justify-between w-full">
             <h2 className="font-bold text-4xl">Sewa Lahan</h2>
             <Link
-              href="#"
+              href="/sewa-lahan"
               className="text-xl hover:text-primary/80 transition-all duration-300"
             >
               Lihat Selengkapnya

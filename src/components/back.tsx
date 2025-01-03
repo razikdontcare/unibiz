@@ -10,9 +10,13 @@ export default function BackBtn(
   >
 ) {
   const router = useRouter();
+
+  const handleClick = async () => {
+    router.back();
+  };
   return (
     <>
-      <button {...props} onClick={() => router.back()}>
+      <button {...props} onClick={handleClick}>
         <ArrowLeftIcon />
       </button>
     </>
