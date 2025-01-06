@@ -31,6 +31,7 @@ export default async function Navbar() {
           <div className="flex items-center w-full border-2 border-black/40 rounded-lg gap-3 p-2">
             <SearchIcon className="size-8" />
             <input
+              type="search"
               className=" text-xl w-full h-full focus:ring-transparent focus:outline-none"
               placeholder="Cari di UniBiz"
             />

@@ -1,7 +1,8 @@
 "use server";
 
 import { clientConfig, serverConfig } from "@/config";
-import { getTokens } from "next-firebase-auth-edge";
+import { UpdateRequest } from "firebase-admin/auth";
+import { getFirebaseAuth, getTokens } from "next-firebase-auth-edge";
 import { refreshServerCookies } from "next-firebase-auth-edge/next/cookies";
 import { cookies, headers } from "next/headers";
 
@@ -32,7 +33,41 @@ export async function getLoginToken() {
     serviceAccount: serverConfig.serviceAccount,
   });
 
-  if (!token) throw new Error("Unauthorized");
+  if (!token) return null;
 
   return token;
+}
+
+export async function setUserClaims(uid: string, claims: object | null) {
+  const { setCustomUserClaims } = getFirebaseAuth({
+    apiKey: clientConfig.apiKey,
+    serviceAccount: serverConfig.serviceAccount,
+  });
+
+  if (!uid) return false;
+
+  await setCustomUserClaims(uid, claims);
+  return true;
+}
+
+export async function updateUserProfile(uid: string, data: UpdateRequest) {
+  const { updateUser } = getFirebaseAuth({
+    apiKey: clientConfig.apiKey,
+    serviceAccount: serverConfig.serviceAccount,
+  });
+
+  if (!uid) return null;
+
+  const user = await updateUser(uid, data);
+  return user;
+}
+
+export async function getUserProfile(uid: string) {
+  const { getUser } = getFirebaseAuth({
+    apiKey: clientConfig.apiKey,
+    serviceAccount: serverConfig.serviceAccount,
+  });
+
+  const user = await getUser(uid);
+  return user;
 }

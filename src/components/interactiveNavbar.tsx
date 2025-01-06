@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ChatIcon from "./icons/chat";
 import { usePathname } from "next/navigation";
+import Pencil2Icon from "./icons/pencil2";
 
 export function ProfileButton({
   email,
@@ -86,7 +87,7 @@ export function ProfileOverlay({
       <div
         className={`${
           open[0] ? "flex" : "hidden"
-        } flex-col absolute right-0 -bottom-64 shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl bg-white`}
+        } flex-col absolute right-0 -bottom-72 shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl bg-white`}
       >
         <div className="flex items-center justify-between p-5">
           <div className="flex items-center gap-3">
@@ -106,12 +107,15 @@ export function ProfileOverlay({
               <span className="font-bold text-xl">{displayName}</span>
               <span className="text-gray-400 text-sm">{email}</span>
             </div>
+            <Link href="/settings/account/profile" className="px-3">
+              <Pencil2Icon className="size-6" />
+            </Link>
           </div>
         </div>
         <div className="w-full h-[0.01rem] bg-black" />
         <div className="flex flex-col items-center justify-center py-3 px-5 gap-5">
           <Link
-            href="/settings/profile"
+            href="/settings/account/profile"
             className="flex items-center justify-start w-full"
           >
             <span className="font-bold">Akun Saya</span>
@@ -121,6 +125,15 @@ export function ProfileOverlay({
             className="flex items-center justify-start w-full"
           >
             <span className="font-bold">Pesanan Saya</span>
+          </Link>
+          <Link
+            href="/settings/notifications"
+            className="flex items-center justify-between w-full"
+          >
+            <span className="font-bold">Notifikasi</span>
+            <span className="bg-primary p-2 size-6 text-xs flex items-center justify-center rounded-full">
+              99
+            </span>
           </Link>
           <LogoutBtn className="flex items-center justify-end w-full gap-1 text-black text-sm">
             <LogoutIcon className="w-4" />

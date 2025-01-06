@@ -18,6 +18,7 @@ export default {
         border: "#AFAFAF",
         "disable-primary": "#E4E4E4",
         "disable-secondary": "#A9A6A6",
+        label: "#8A8484",
       },
     },
   },
