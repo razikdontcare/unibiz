@@ -8,37 +8,58 @@ import AttachmentIcon from "../icons/chats/attachment";
 import SendIcon from "../icons/chats/send";
 import BackBtn from "../back";
 
+interface Message {
+  message: string;
+  isMe: boolean;
+}
+
 interface Chat {
   src: string;
   name: string;
   org: string;
-  message: string;
+  message: Message[];
   day: string;
   unread: number;
   selected?: boolean;
 }
 
-const chats: Chat[] = [
-  {
-    src: "https://picsum.photos/seed/1/512/512",
-    name: "Universitas Udayana",
-    org: "Universitas Udayana",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ad sint placeat aliquam, provident totam tenetur hic molestiae animi, modi porro amet fugiat sequi voluptatum! Sed earum dicta praesentium, similique facere totam a nobis fuga voluptas explicabo error veniam voluptatum, esse maiores quis possimus dolore numquam expedita accusantium reiciendis doloremque?",
-    day: "Senin",
-    unread: 99,
-  },
-  {
-    src: "https://picsum.photos/seed/2/512/512",
-    name: "HIMAIF",
-    org: "Himpunan Mahasiswa Informatika",
-    message: "Halo kak, ada yang bisa kami bantu?",
-    day: "Selasa",
-    unread: 1,
-  },
-];
-
 export default function Chats() {
+  const [msgs, setMsgs] = useState<Message[]>([
+    {
+      message: "Halo kak",
+      isMe: true,
+    },
+    {
+      message: "Halo kak, ada yang bisa kami bantu?",
+      isMe: false,
+    },
+  ]);
+
+  const [message, setMessage] = useState("");
+
+  const addMessage = (newMessage: Message) => {
+    setMsgs((prevMsgs) => [...prevMsgs, newMessage]);
+  };
+
+  const chats: Chat[] = [
+    {
+      src: "https://picsum.photos/seed/1/512/512",
+      name: "Universitas Udayana",
+      org: "Universitas Udayana",
+      message: msgs,
+      day: "Senin",
+      unread: 99,
+    },
+    {
+      src: "https://picsum.photos/seed/2/512/512",
+      name: "HIMAIF",
+      org: "Himpunan Mahasiswa Informatika",
+      message: msgs,
+      day: "Selasa",
+      unread: 1,
+    },
+  ];
+
   const [selected, setSelected] = useState(0);
 
   return (
@@ -110,16 +131,16 @@ export default function Chats() {
                 <div className="self-center bg-white py-2 px-3 my-10 text-base rounded-full">
                   Senin, 11 Nov 2024
                 </div>
-                <div className="chat chat-end">
-                  <div className="chat-bubble bg-white text-black">
-                    halo kak
+                {chats[selected - 1].message.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={`chat ${msg.isMe ? "chat-end" : "chat-start"}`}
+                  >
+                    <div className="chat-bubble bg-white text-black">
+                      {msg.message}
+                    </div>
                   </div>
-                </div>
-                <div className="chat chat-start">
-                  <div className="chat-bubble bg-white text-black">
-                    halo kak, ada yang bisa kami bantu?
-                  </div>
-                </div>
+                ))}
               </div>
               <div className="bg-[#DBDBDB] w-full p-2">
                 <div className="flex items-center w-full border-2 border-black/40 rounded-lg gap-3 p-2 bg-white">
@@ -128,8 +149,14 @@ export default function Chats() {
                   <input
                     className=" text-xl w-full flex-1 h-full focus:ring-transparent focus:outline-none"
                     placeholder="Ketik Pesan"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   />
-                  <SendIcon className="size-8" />
+                  <button
+                    onClick={() => addMessage({ message: message, isMe: true })}
+                  >
+                    <SendIcon className="size-8" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -166,7 +193,9 @@ function ChatList(props: Chat & { onClick: () => void }) {
               <span className="line-clamp-1">{props.org}</span>
             </span>
           </div>
-          <span className="line-clamp-1 text-sm">{props.message}</span>
+          <span className="line-clamp-1 text-sm">
+            {props.message[props.message.length - 1].message}
+          </span>
         </div>
       </div>
       <div className="flex flex-col items-end justify-center gap-1">
