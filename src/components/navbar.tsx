@@ -5,7 +5,7 @@ import { getTokens } from "next-firebase-auth-edge";
 import { cookies } from "next/headers";
 import { clientConfig, serverConfig } from "@/config";
 import { redirect } from "next/navigation";
-import { ProfileButton } from "./interactiveNavbar";
+import { LoginBtn, ProfileButton } from "./interactiveNavbar";
 
 export default async function Navbar() {
   const token = await getTokens(await cookies(), {
@@ -46,12 +46,7 @@ export default async function Navbar() {
           </div>
         ) : (
           <div className={"flex items-center justify-center gap-4"}>
-            <Link
-              href={"/login?callbackUrl=/"}
-              className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
-            >
-              <span>Masuk</span>
-            </Link>
+            <LoginBtn />
             <Link
               href={"/register"}
               className="flex items-center justify-center py-3 px-4 text-white bg-primary border-2 border-primary rounded-xl font-medium hover:bg-primary/80 hover:border-primary/80 transition-all duration-300"

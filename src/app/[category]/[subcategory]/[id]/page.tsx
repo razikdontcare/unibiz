@@ -1,10 +1,14 @@
-import ArrowLeftIcon from "@/components/icons/arrowLeft";
 import Navbar from "@/components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import StarIcon from "@/components/icons/star";
 import formatPrice from "@/utils/formatPrice";
 import CalendarIcon from "@/components/icons/calendar";
+import BubbleChatIcon from "@/components/icons/bubble";
+import { clientConfig, serverConfig } from "@/config";
+import { getTokens } from "next-firebase-auth-edge";
+import { cookies } from "next/headers";
+import BackBtn from "@/components/back";
 
 interface RegularProduct {
   title: string;
@@ -126,15 +130,19 @@ export default async function ProductPage({
 }) {
   const { id, category } = await params;
   const item = items[category];
+
+  const token = await getTokens(await cookies(), {
+    apiKey: clientConfig.apiKey,
+    cookieName: serverConfig.cookieName,
+    cookieSignatureKeys: serverConfig.cookieSignatureKeys,
+    serviceAccount: serverConfig.serviceAccount,
+  });
+
   return (
     <>
       <Navbar />
       <div className="flex items-start container mx-auto max-w-7xl gap-5 pt-36 min-h-screen">
-        <Link href="/">
-          <div className="flex items-center">
-            <ArrowLeftIcon />
-          </div>
-        </Link>
+        <BackBtn className="flex items-center" />
         <div className="flex items-center justify-center flex-col gap-2">
           <div className="relative size-52 overflow-hidden border-2 border-black rounded-md">
             <Image
@@ -337,12 +345,27 @@ export default async function ProductPage({
             <span className="opacity-40">Subtotal</span>
             <span className="text-lg font-bold">{formatPrice(350000, 0)}</span>
           </div>
-          <button className="text-white font-bold bg-primary border border-primary rounded-xl p-2">
+          <Link
+            href="/cart"
+            className="text-white font-bold bg-primary border border-primary rounded-xl p-2 flex items-center justify-center"
+          >
             <span>+ Keranjang</span>
-          </button>
-          <button className="text-primary font-bold bg-white border border-primary rounded-xl p-2">
+          </Link>
+          <Link
+            href="/checkout"
+            className="text-primary bg-white border border-primary rounded-xl p-2 flex items-center justify-center"
+          >
             <span>Pesan Langsung</span>
-          </button>
+          </Link>
+          {token && (
+            <Link
+              href="/chats"
+              className="text-primary bg-white border border-primary rounded-xl p-2 flex items-center justify-center gap-2"
+            >
+              <span>Hubungi Penjual</span>
+              <BubbleChatIcon className="size-6" />
+            </Link>
+          )}
         </div>
       </div>
     </>

@@ -1,5 +1,4 @@
 import CartParent from "@/components/Cart/parent";
-import ArrowLeftIcon from "@/components/icons/arrowLeft";
 import Navbar from "@/components/navbar";
 import { clientConfig, serverConfig } from "@/config";
 import { getTokens } from "next-firebase-auth-edge";
@@ -7,6 +6,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Items } from "@/types";
+import BackBtn from "@/components/back";
 
 const items = [
   {
@@ -48,11 +48,7 @@ export default async function Cart() {
       <Navbar />
       <div className="flex flex-col justify-center items-center max-w-7xl mx-auto pt-36">
         <div className="flex items-center justify-between w-full">
-          <div>
-            <Link href="/">
-              <ArrowLeftIcon />
-            </Link>
-          </div>
+          <BackBtn />
           <div>
             <h1 className="text-2xl font-bold">Keranjang Saya</h1>
           </div>

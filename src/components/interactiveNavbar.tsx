@@ -8,6 +8,7 @@ import LogoutBtn from "./logoutBtn";
 import Image from "next/image";
 import Link from "next/link";
 import ChatIcon from "./icons/chat";
+import { usePathname } from "next/navigation";
 
 export function ProfileButton({
   email,
@@ -19,8 +20,6 @@ export function ProfileButton({
   picture: string | undefined;
 }) {
   const [isOpen, setOpen] = useState<boolean>(false);
-
-  console.log(email, name, picture);
 
   return (
     <>
@@ -129,6 +128,21 @@ export function ProfileOverlay({
           </LogoutBtn>
         </div>
       </div>
+    </>
+  );
+}
+
+export function LoginBtn() {
+  const pathname = usePathname();
+
+  return (
+    <>
+      <Link
+        href={"/login?callbackUrl=" + encodeURIComponent(pathname)}
+        className="flex items-center justify-center py-3 px-4 text-primary border-2 border-primary rounded-xl hover:text-white hover:bg-primary font-medium transition-all duration-300"
+      >
+        <span>Masuk</span>
+      </Link>
     </>
   );
 }

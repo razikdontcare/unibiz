@@ -23,3 +23,16 @@ export async function refreshCreds() {
     serviceAccount: serverConfig.serviceAccount,
   });
 }
+
+export async function getLoginToken() {
+  const token = await getTokens(await cookies(), {
+    apiKey: clientConfig.apiKey,
+    cookieName: serverConfig.cookieName,
+    cookieSignatureKeys: serverConfig.cookieSignatureKeys,
+    serviceAccount: serverConfig.serviceAccount,
+  });
+
+  if (!token) throw new Error("Unauthorized");
+
+  return token;
+}

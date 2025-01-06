@@ -140,7 +140,6 @@ export default function Login({
                 type="submit"
                 className="w-full border-2 rounded-lg font-bold border-btn disabled:border-border py-3 px-5 disabled:text-disable-secondary disabled:bg-disable-primary bg-btn text-white hover:bg-btn/90 transition-colors duration-300"
                 disabled={email === "" || password === "" || loading}
-                aria-disabled={loading}
               >
                 {loading ? "Loading..." : "Selanjutnya"}
               </button>
