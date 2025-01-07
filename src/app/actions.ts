@@ -5,6 +5,8 @@ import { UpdateRequest } from "firebase-admin/auth";
 import { getFirebaseAuth, getTokens } from "next-firebase-auth-edge";
 import { refreshServerCookies } from "next-firebase-auth-edge/next/cookies";
 import { cookies, headers } from "next/headers";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "@/db/firebase";
 
 export async function refreshCreds() {
   const token = await getTokens(await cookies(), {
@@ -70,4 +72,15 @@ export async function getUserProfile(uid: string) {
 
   const user = await getUser(uid);
   return user;
+}
+
+export async function sendResetPasswordEmail(email: string) {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    return true;
+  } catch (error) {
+    if (error instanceof Error) {
+      return false;
+    }
+  }
 }
