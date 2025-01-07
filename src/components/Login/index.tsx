@@ -42,7 +42,7 @@ export default function Login({
   return (
     <>
       <div>
-        <div className="flex flex-col items-center justify-start h-screen overflow-hidden py-10 gap-10 w-full mx-auto ">
+        <div className="flex flex-col items-center justify-start h-screen py-10 gap-10 w-full mx-auto ">
           <Link href="/" className="flex items-center justify-center">
             <Logo className="size-20" />
             <span className="font-bold text-4xl text-primary">UniBiz</span>
@@ -127,12 +127,12 @@ export default function Login({
 
             <div className="flex items-center justify-end w-full">
               <Link
-                href="#"
+                href="/forgot-password"
                 className={`font-bold text-primary ${
                   !searchParams.error && "pt-10"
                 } pb-5`}
               >
-                Butuh Bantuan?
+                Lupa Password?
               </Link>
             </div>
             <div className="flex items-center w-full">
@@ -188,6 +188,9 @@ export default function Login({
                 <GoogleIcon />
                 <span>Google</span>
               </button>
+              <Link href="#" className={`font-bold text-primary pt-3 pb-5`}>
+                Butuh Bantuan?
+              </Link>
             </div>
           </form>
         </div>
