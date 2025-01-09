@@ -64,7 +64,7 @@ export default function Chats() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center container max-w-7xl mx-auto pt-32 h-screen">
+      <div className="flex flex-col justify-center items-center container max-w-7xl mx-auto pt-32 h-screen overflow-hidden">
         {selected === 0 && (
           <div className="flex items-center justify-between w-full py-5">
             <BackBtn />
@@ -74,7 +74,7 @@ export default function Chats() {
             <div className={`relative`}></div>
           </div>
         )}
-        <div className="flex flex-1 w-full">
+        <div className="flex flex-1 w-full overflow-hidden">
           <div className="w-[30rem] flex items-center flex-col gap-3 ">
             {selected !== 0 && (
               <div className="flex items-center justify-between w-full py-5">
@@ -119,7 +119,7 @@ export default function Chats() {
               </div>
             </div>
           ) : (
-            <div className="flex-1 flex flex-col items-center">
+            <div className="flex-1 flex flex-col items-center size-full overflow-hidden">
               <div className="bg-white flex w-full px-3 py-5 gap-2 items-center border-l-2 border-black">
                 <span className="font-bold text-xl">
                   {chats[selected - 1].name}
@@ -127,23 +127,33 @@ export default function Chats() {
                 <span className="text-xl">-</span>
                 <span className="text-xl">{chats[selected - 1].org}</span>
               </div>
-              <div className="flex-1 w-full flex flex-col justify-end bg-[#DBDBDB] px-2 text-xl">
-                <div className="self-center bg-white py-2 px-3 my-10 text-base rounded-full">
-                  Senin, 11 Nov 2024
-                </div>
-                {chats[selected - 1].message.map((msg, index) => (
-                  <div
-                    key={index}
-                    className={`chat ${msg.isMe ? "chat-end" : "chat-start"}`}
-                  >
-                    <div className="chat-bubble bg-white text-black">
-                      {msg.message}
-                    </div>
+              <div className="flex-1 w-full h-screen flex flex-col justify-end bg-[#DBDBDB] px-2 text-xl overflow-hidden">
+                <div className="flex flex-col size-full justify-end overflow-y-auto">
+                  <div className="self-center bg-white py-2 px-3 my-10 text-base rounded-full">
+                    Senin, 11 Nov 2024
                   </div>
-                ))}
+                  {chats[selected - 1].message.map((msg, index) => (
+                    <div
+                      key={index}
+                      className={`chat ${msg.isMe ? "chat-end" : "chat-start"}`}
+                    >
+                      <div className="chat-bubble bg-white text-black">
+                        {msg.message}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="bg-[#DBDBDB] w-full p-2">
-                <div className="flex items-center w-full border-2 border-black/40 rounded-lg gap-3 p-2 bg-white">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (message === "") return;
+                    addMessage({ message: message, isMe: true });
+                    setMessage("");
+                  }}
+                  className="flex items-center w-full border-2 border-black/40 rounded-lg gap-3 p-2 bg-white"
+                >
                   <EmojiIcon className="size-8" />
                   <AttachmentIcon className="size-8" />
                   <input
@@ -152,12 +162,10 @@ export default function Chats() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
-                  <button
-                    onClick={() => addMessage({ message: message, isMe: true })}
-                  >
+                  <button type="submit">
                     <SendIcon className="size-8" />
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           )}

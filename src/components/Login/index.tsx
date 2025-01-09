@@ -23,6 +23,7 @@ export default function Login({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | undefined>();
 
   const router = useRouter();
 
@@ -35,7 +36,13 @@ export default function Login({
       case "auth/user-not-found":
         return <span className="text-red-400">Email atau password salah.</span>;
       default:
-        return <span className="text-red-400">Terjadi kesalahan.</span>;
+        return (
+          <span className="text-red-400">
+            {errorMsg === "" || errorMsg === undefined
+              ? "Terjadi Kesalahan"
+              : errorMsg}
+          </span>
+        );
     }
   };
 
@@ -73,6 +80,7 @@ export default function Login({
               } catch (error) {
                 setLoading(false);
                 if (error instanceof FirebaseError) {
+                  setErrorMsg(error.message);
                   router.push(
                     `/login?error=${error.code}&callbackUrl=${
                       searchParams.callbackUrl || "/"
@@ -81,7 +89,7 @@ export default function Login({
                 }
               }
             }}
-            className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl px-10 py-20 w-full max-w-xl"
+            className="flex flex-col items-center justify-start shadow-[0px_0px_13.1px_-1px_#00000045] rounded-xl p-10 w-full max-w-xl"
           >
             <div className="flex items-center justify-between w-full pb-4">
               <h1 className="font-bold text-xl">Masuk ke UniBiz</h1>

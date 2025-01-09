@@ -133,7 +133,10 @@ export default function RegisterMainPage({
         </div>
         <div className="flex items-center justify-center py-5 gap-3">
           <span>Daftar Sebagai Seller?</span>
-          <Link href="/seller" className="text-primary">
+          <Link
+            href={`/login?callbackUrl=${encodeURIComponent("/seller/daftar")}`}
+            className="text-primary"
+          >
             Daftar Seller
           </Link>
         </div>

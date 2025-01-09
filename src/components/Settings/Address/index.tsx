@@ -1,10 +1,12 @@
 "use client";
 import PlusIcon from "@/components/icons/plus";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import formatPhone from "@/utils/formatPhone";
+import CheckIcon from "@/components/icons/Check";
 
 export default function Address() {
   const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
   return (
     <>
       <div className="flex items-center justify-between w-full">
@@ -69,7 +71,8 @@ export default function Address() {
         </div>
       </div>
 
-      <AddAddressOverlay open={open} set={setOpen} />
+      <AddAddressOverlay open={open} set={setOpen} success={setSuccess} />
+      <Overlay open={success} set={setSuccess} />
     </>
   );
 }
@@ -77,9 +80,11 @@ export default function Address() {
 function AddAddressOverlay({
   open,
   set,
+  success,
 }: {
   open: boolean;
   set: React.Dispatch<React.SetStateAction<boolean>>;
+  success: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <>
@@ -150,12 +155,48 @@ function AddAddressOverlay({
               Batal
             </button>
             <button
-              onClick={() => set(false)}
+              onClick={() => {
+                set(false);
+                success(true);
+              }}
               className="bg-primary text-white px-8 py-1"
             >
               Simpan
             </button>
           </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Overlay({
+  open,
+  set,
+}: {
+  open: boolean;
+  set: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        set(false);
+      }, 2000);
+    }
+  });
+
+  return (
+    <>
+      <div
+        className={`absolute top-0 left-0 flex items-center justify-center h-screen w-full backdrop-blur-[1px] bg-black/10 ${
+          !open ? "hidden" : ""
+        }`}
+      >
+        <div className="bg-white p-10 flex flex-col items-center justify-center min-w-96 gap-5">
+          <CheckIcon className="size-14" />
+          <span className="font-medium text-xl">
+            Alamat berhasil ditambahkan.
+          </span>
         </div>
       </div>
     </>

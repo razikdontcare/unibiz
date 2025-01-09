@@ -346,13 +346,13 @@ export default async function ProductPage({
             <span className="text-lg font-bold">{formatPrice(350000, 0)}</span>
           </div>
           <Link
-            href="/cart"
+            href={token ? "/cart" : "/login"}
             className="text-white font-bold bg-primary border border-primary rounded-xl p-2 flex items-center justify-center"
           >
             <span>+ Keranjang</span>
           </Link>
           <Link
-            href="/checkout"
+            href={token ? "/checkout" : "/login"}
             className="text-primary bg-white border border-primary rounded-xl p-2 flex items-center justify-center"
           >
             <span>Pesan Langsung</span>
