@@ -16,6 +16,7 @@
     "next-firebase-auth-edge": "^1.8.2",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-focus-lock": "^2.13.5",
     "zod": "^3.24.1"
   },
   "devDependencies": {
