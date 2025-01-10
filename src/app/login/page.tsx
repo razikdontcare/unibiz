@@ -20,7 +20,7 @@ export default async function LoginPage(props: {
   });
 
   if (token) {
-    redirect("/");
+    redirect(params.callbackUrl || "/");
   }
 
   return (

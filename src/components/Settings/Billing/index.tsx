@@ -1,9 +1,11 @@
 "use client";
+import CheckIcon from "@/components/icons/Check";
 import PlusIcon from "@/components/icons/plus";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Billing() {
   const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
   return (
     <>
       <div className="flex flex-col w-full gap-3">
@@ -61,7 +63,8 @@ export default function Billing() {
         </div>
       </div>
 
-      <AddCard open={open} set={setOpen} />
+      <AddCard open={open} set={setOpen} success={setSuccess} />
+      <Overlay open={success} set={setSuccess} />
     </>
   );
 }
@@ -69,9 +72,11 @@ export default function Billing() {
 function AddCard({
   open,
   set,
+  success,
 }: {
   open: boolean;
   set: React.Dispatch<React.SetStateAction<boolean>>;
+  success: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <>
@@ -136,12 +141,48 @@ function AddCard({
               Nanti Saja
             </button>
             <button
-              onClick={() => set(false)}
+              onClick={() => {
+                set(false);
+                success(true);
+              }}
               className="bg-primary border border-primary text-white px-8 py-1"
             >
               Kirimkan
             </button>
           </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Overlay({
+  open,
+  set,
+}: {
+  open: boolean;
+  set: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        set(false);
+      }, 2000);
+    }
+  });
+
+  return (
+    <>
+      <div
+        className={`absolute top-0 left-0 flex items-center justify-center h-screen w-full backdrop-blur-[1px] bg-black/10 ${
+          !open ? "hidden" : ""
+        }`}
+      >
+        <div className="bg-white p-10 flex flex-col items-center justify-center min-w-96 gap-5">
+          <CheckIcon className="size-14" />
+          <span className="font-medium text-xl">
+            Credit Card telah berhasil ditambahkan.
+          </span>
         </div>
       </div>
     </>
